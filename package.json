@@ -26,6 +26,7 @@
     "should": "^6.0.3"
   },
   "dependencies": {
-    "ws": "^1.0.1"
+    "ws": "^1.0.1",
+    "meta-api-shared": "*"
   }
 }
