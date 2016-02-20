@@ -14,9 +14,14 @@ if(!process.argv[2]){
 	process.exit();
 }
 
-var client = new Api.Client(process.argv[3]);
+if(!process.argv[3]){
+	console.error("API secret must be specified as second argument.");
+	process.exit();
+}
 
-client.connect(process.argv[2]).then(function(){
+var client = new Api.Client(process.argv[4]);
+
+client.connect(process.argv[2], process.argv[3]).then(function(){
 
 	console.log("Connected.");
 
@@ -149,10 +154,31 @@ client.connect(process.argv[2]).then(function(){
 
 		enqueue: function(queue, message){
 			reply(client.enqueue(queue, makeObj(message)));
+		},
+
+		close: function(){
+			client.close().then(function(){
+				//OK
+			}, function(err){
+				console.error(err);
+			});
 		}
 
 	};
 
 }, function(err){
 	console.error("Error connecting to API:", err);
+});
+
+client.connection.on("connectionError", function(err){
+	console.error("Connection error:", err);
+});
+
+client.connection.on("reconnect", function(err){
+	console.error("Reconnecting:", err);
+});
+
+client.connection.on("close", function(err){
+	console.log("Connection closed.");
+	process.exit();
 });
