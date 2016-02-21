@@ -19,9 +19,9 @@ if(!process.argv[3]){
 	process.exit();
 }
 
-var client = new Api.Client(process.argv[4]);
+var client = new Api.Client(process.argv[3]);
 
-client.connect(process.argv[2], process.argv[3]).then(function(){
+client.connect(process.argv[2], process.argv[4]).then(function(){
 
 	console.log("Connected.");
 
