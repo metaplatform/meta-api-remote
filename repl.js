@@ -43,8 +43,8 @@ client.connect(process.argv[2], process.argv[4]).then(function(){
 			console.log("\nReply:");
 			console.dir(res, { colors: true, depth: null });
 
-			if(res instanceof Object && res.service && res.endpoint && res.id)
-				replServer.context.api.subscribe((new Shared.Types.ChannelReference(res.service, res.endpoint, res.id)).toString());
+			if(res instanceof Shared.Types.ChannelReference)
+				replServer.context.api.subscribe(res.toString());
 
 			console.log("Done.");
 
