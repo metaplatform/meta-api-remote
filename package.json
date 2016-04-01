@@ -27,6 +27,6 @@
   },
   "dependencies": {
     "ws": "^1.0.1",
-    "meta-api-shared": "*"
+    "meta-api-shared": "git+https://github.com/metaplatform/meta-api-shared.git#master"
   }
 }
