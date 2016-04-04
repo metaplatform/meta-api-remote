@@ -22,7 +22,6 @@
     "jshint": "^2.8.0",
     "jshint-full-path": "^1.1.1",
     "mocha": "^2.2.5",
-    "mock-fs": "^3.1.0",
     "should": "^6.0.3"
   },
   "dependencies": {
